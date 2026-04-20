@@ -1,5 +1,5 @@
 import type { Restaurant } from "../types/restaurant";
-import "./main.css"
+import "../main.css"
 
 type Props = {
     restaurant: Restaurant;
