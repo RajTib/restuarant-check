@@ -1,21 +1,23 @@
+import { useState } from "react";
 import type { Restaurant } from "../types/restaurant";
 import { getCardColour } from "../utils/Colours";
 import { getShadowColour } from "../utils/Colours";
 import { getScoreColour } from "../utils/Colours";
 import "../main.css"
-import { useState } from "react";
 
 type Props = {
     restaurant: Restaurant;
 };
 
 function RestaurantCard({ restaurant }: Props) {
+    const [expanded, setExpanded] = useState(false);
+
     return (
-        <div className="restaurantCard" style={{
+        <div className={`restaurantCard ${expanded ? "expanded" : ""}`} style={{
             "--card-bg": getCardColour(restaurant.safetyScore),
             "--card-shadow": getShadowColour(restaurant.safetyScore)
         } as React.CSSProperties
-        }>
+        } onClick={() => setExpanded(!expanded)}>
             <div className="card-header">
                 <h2>{restaurant.name}</h2>
                 <span className="score-badge">Safety Score: {restaurant.safetyScore}</span>
@@ -28,15 +30,17 @@ function RestaurantCard({ restaurant }: Props) {
                     }}
                 ></div>
             </div>
-            {/* {restaurant.issues.length > 0 ? (
+            {expanded && (
                 <ul>
-                    {restaurant.issues.map((issue, index) => (
-                        <li key={index}>{issue}</li>
-                    ))}
+                    {restaurant.issues.length > 0 ? (
+                        restaurant.issues.map((issue, index) => (
+                            <li key={index}>{issue}</li>
+                        ))
+                    ) : (
+                        <p className="no-issues">No issues reported ✅</p>
+                    )}
                 </ul>
-            ) : (
-                <p>No issues reported</p>
-            )} */}
+            )}
         </div>
     )
 }
