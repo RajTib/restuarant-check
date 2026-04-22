@@ -13,9 +13,25 @@ body {
 }
 
 .restaurantCard {
-    border: 1px solid #ccc;
-    padding: 12px;
-    margin-bottom: 10px;
+    padding: 18px;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.restaurantCard h2 {
+    margin-bottom: 6px;
+}
+
+.restaurantCard p {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.restaurantCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
 }
 
 .progress-bar {
