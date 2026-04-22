@@ -18,5 +18,11 @@ export const restaurants: Restaurant[] = [
         name: "Pizza Plaza",
         safetyScore: 30,
         issues: ["Poor ventilation", "Rats", "No gloves", "No haircap"]
+    },
+    {
+        id: "4",
+        name: "Hot Lips",
+        safetyScore: 100,
+        issues: ["None"]
     }
 ]
