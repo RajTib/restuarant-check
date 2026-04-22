@@ -7,9 +7,11 @@ function App() {
     <div className="container">
       <h1>Restaurant Safety App</h1>
 
-      {restaurants.map((r) => (
-        <RestaurantCard key={r.id} restaurant={r} />
-      ))}
+      <div className="card-grid">
+        {restaurants.map((r) => (
+          <RestaurantCard key={r.id} restaurant={r} />
+        ))}
+      </div>
     </div>
   )
 }
