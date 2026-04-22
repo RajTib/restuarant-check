@@ -1,27 +1,13 @@
 import type { Restaurant } from "../types/restaurant";
+import { getCardColour } from "../utils/Colours";
+import { getShadowColour } from "../utils/Colours";
+import { getScoreColour } from "../utils/Colours";
 import "../main.css"
+import { useState } from "react";
 
 type Props = {
     restaurant: Restaurant;
 };
-
-function getScoreColour(score: number): string {
-    if (score >= 80) return "green";
-    if (50 <= score && score <= 79) return "orange";
-    return "red";
-}
-
-function getCardColour(score: number): string {
-    if (score >= 80) return "#95d669ec"
-    if (50 <= score && score <= 79) return "#fdca86"
-    return "#ffaaaa"
-}
-
-function getShadowColour(score: number): string {
-    if (score >= 80) return "rgb(34, 197, 94)"
-    if (50 <= score && score <= 79) return "rgb(245, 143, 60)"
-    return "rgb(239, 68, 68)"
-}
 
 function RestaurantCard({ restaurant }: Props) {
     return (
