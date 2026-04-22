@@ -3,6 +3,7 @@ import { getCardColour } from "../utils/Colours";
 import { getShadowColour } from "../utils/Colours";
 import { getScoreColour } from "../utils/Colours";
 import "../main.css"
+import { useState } from "react";
 
 type Props = {
     restaurant: Restaurant;
