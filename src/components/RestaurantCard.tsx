@@ -26,11 +26,14 @@ function getShadowColour(score: number): string {
 function RestaurantCard({ restaurant }: Props) {
     return (
         <div className="restaurantCard" style={{
-            backgroundColor: getCardColour(restaurant.safetyScore),
-            boxShadow: `0 8px 20px ${getShadowColour(restaurant.safetyScore)}`
-        }}>
-            <h2>{restaurant.name}</h2>
-            <p>Safety Score: {restaurant.safetyScore}</p>
+            "--card-bg": getCardColour(restaurant.safetyScore),
+            "--card-shadow": getShadowColour(restaurant.safetyScore)
+        } as React.CSSProperties
+        }>
+            <div className="card-header">
+                <h2>{restaurant.name}</h2>
+                <span className="score-badge">Safety Score: {restaurant.safetyScore}</span>
+            </div>
             <div className="progress-bar">
                 <div className="progress-fill"
                     style={{
@@ -39,7 +42,7 @@ function RestaurantCard({ restaurant }: Props) {
                     }}
                 ></div>
             </div>
-            {restaurant.issues.length > 0 ? (
+            {/* {restaurant.issues.length > 0 ? (
                 <ul>
                     {restaurant.issues.map((issue, index) => (
                         <li key={index}>{issue}</li>
@@ -47,7 +50,7 @@ function RestaurantCard({ restaurant }: Props) {
                 </ul>
             ) : (
                 <p>No issues reported</p>
-            )}
+            )} */}
         </div>
     )
 }
