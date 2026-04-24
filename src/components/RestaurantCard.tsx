@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { Restaurant } from "../types/restaurant";
 import { getCardColour } from "../utils/Colours";
 import { getShadowColour } from "../utils/Colours";
@@ -7,17 +6,16 @@ import "../main.css"
 
 type Props = {
     restaurant: Restaurant;
+    onSelect: (r: Restaurant) => void;
 };
 
-function RestaurantCard({ restaurant }: Props) {
-    const [expanded, setExpanded] = useState(false);
-
+function RestaurantCard({ restaurant, onSelect }: Props) {
     return (
-        <div className={`restaurantCard ${expanded ? "expanded" : ""}`} style={{
+        <div className={`restaurantCard`} style={{
             "--card-bg": getCardColour(restaurant.safetyScore),
             "--card-shadow": getShadowColour(restaurant.safetyScore)
         } as React.CSSProperties
-        } onClick={() => setExpanded(!expanded)}>
+        } onClick={() => { console.log("clicked", restaurant.name); onSelect(restaurant) }}>
             <div className="card-header">
                 <h2>{restaurant.name}</h2>
                 <span className="score-badge">Safety Score: {restaurant.safetyScore}</span>
@@ -30,17 +28,6 @@ function RestaurantCard({ restaurant }: Props) {
                     }}
                 ></div>
             </div>
-            {expanded && (
-                <ul>
-                    {restaurant.issues.length > 0 ? (
-                        restaurant.issues.map((issue, index) => (
-                            <li key={index}>{issue}</li>
-                        ))
-                    ) : (
-                        <p className="no-issues">No issues reported ✅</p>
-                    )}
-                </ul>
-            )}
         </div>
     )
 }
