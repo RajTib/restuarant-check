@@ -30,7 +30,7 @@ function App() {
             className="modal-card"
             style={{
               backgroundColor: getCardColour(selectedRestaurant.safetyScore),
-              boxShadow: `0 8px 25px ${getShadowColour(selectedRestaurant.safetyScore)}`
+              boxShadow: `0 6px 20px ${getShadowColour(selectedRestaurant.safetyScore)}`
             }}
             onClick={(e) => e.stopPropagation()}
           >
